@@ -8,6 +8,16 @@ const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 
+
+
+
+const fs = require('fs');
+const key = fs.readFileSync('../key.pem');
+const cert = fs.readFileSync('../keytmp.pem');
+
+const express     = require('express');
+const https = require('https');
+
 const app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -35,6 +45,10 @@ app.use(function(req, res, next) {
     .type('text')
     .send('Not Found');
 });
+
+
+
+const server = https.createServer({key: key, cert: cert }, app);
 
 //Start our server and tests!
 const listener = app.listen(process.env.PORT || 3000, function () {
