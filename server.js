@@ -12,10 +12,10 @@ const runner            = require('./test-runner');
 
 
 const fs = require('fs');
-const key = fs.readFileSync('../key.pem');
-const cert = fs.readFileSync('../keytmp.pem');
+const key = fs.readFileSync('./key.pem');
+const cert = fs.readFileSync('./cert.pem');
 
-const express     = require('express');
+
 const https = require('https');
 
 const app = express();

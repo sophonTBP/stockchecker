@@ -1,2 +1,5 @@
 /node_modules/
-.env
+sample.env
+key.pem
+keytmp.pem
+cert.pem
